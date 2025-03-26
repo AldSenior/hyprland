@@ -1,0 +1,103 @@
+# Запуск терминала
+super + q
+    alacritty
+
+# Закрыть окно
+super + c
+    bspc node -c
+
+# Выйти из bspwm (аналог exit в Hyprland)
+super + m
+    pkill bspwm
+
+# Запуск файлового менеджера
+super + e
+    alacritty -e yazi
+
+# Переключение плавающего режима
+super + v
+    bspc node -t floating
+
+# Запуск меню (аналог wofi)
+super + r
+    rofi -show drun
+
+# Псевдотайлинг (аналог pseudo в Hyprland)
+super + p
+    bspc node -t pseudo_tiled
+
+# Разделение окна (аналог togglesplit в Hyprland)
+super + j
+    bspc node -s next.local
+# Скриншот
+super + z
+    grim - | swappy -f -
+
+# Перевод текста с выделенной области экрана
+super + y
+    /home/arthur/Desktop/ScriptsMy/bash/screentranslate.sh
+
+# Переключение фокуса между окнами (стрелки)
+super + {Left,Down,Up,Right}
+    bspc node -f {west,south,north,east}
+ 
+# Перемещение окон (стрелки + Shift)
+super + shift + {Left,Down,Up,Right}
+    bspc node -v {west,south,north,east}
+
+# Переключение рабочих столов
+super + {1-9,0}
+    bspc desktop -f {1-9,10}
+
+# Перемещение окон на другой рабочий стол
+super + shift + {1-9,0}
+    bspc node -d {1-9,10}
+
+# Полноэкранный режим
+super + f
+    bspc node -t fullscreen
+
+super + shift + f
+    bspc node -t ~fullscreen
+
+super + space 
+    setxkbmap -layout us,ru -option grp:win_space_toggle
+# Управление звуком
+XF86AudioRaiseVolume
+    pamixer -i 5
+XF86AudioLowerVolume
+    pamixer -d 5
+XF86AudioMute
+    pamixer -t
+
+# Управление яркостью
+XF86MonBrightnessUp
+    brightnessctl set 10%+
+XF86MonBrightnessDown
+    brightnessctl set 10%-
+
+# Управление уведомлениями (dunst)
+ctrl + alt + c
+    dunstctl close
+ctrl + alt + a
+    dunstctl close-all
+ctrl + alt + h
+    dunstctl history-pop
+ctrl + alt + p
+    dunstctl set-paused toggle
+
+# Дашбоард (eww)
+ctrl + d
+    /home/arthur/.config/eww/dashboard/launch_bar.sh
+
+# Перезапуск eww
+ctrl + g
+    killall eww && eww daemon
+
+# Управление медиа (playerctl)
+XF86AudioNext
+    playerctl next
+XF86AudioPlay
+    playerctl play-pause
+XF86AudioPrev
+    playerctl previous
